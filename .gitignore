@@ -38,6 +38,9 @@ yarn-error.*
 
 app-example
 
+# Exclude native IR module build artifacts
+modules/ir/android/build/
+
 # generated native folders
 /ios
 /android
