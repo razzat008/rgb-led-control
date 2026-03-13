@@ -1,0 +1,8 @@
+{
+  "name": "IrModule",
+  "platforms": ["android"],
+  "android": {
+    "modules": ["com.ledblink.ir.IrModule"],
+    "package": "com.ledblink.ir.IrPackage"
+  }
+}
