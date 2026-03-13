@@ -1,9 +1,9 @@
-buildDir = new File(rootProject.buildDir, "modules-ir-android")
-
 plugins {
   id 'com.android.library'
   id 'org.jetbrains.kotlin.android'
 }
+
+buildDir = new File(rootProject.buildDir, "modules-ir-android")
 
 android {
   namespace 'com.ledblink.ir'
