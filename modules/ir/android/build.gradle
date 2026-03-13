@@ -5,11 +5,11 @@ plugins {
 
 android {
   namespace 'com.ledblink.ir'
-  compileSdk 34
+  compileSdk 36
 
   defaultConfig {
-    minSdk 21
-    targetSdk 34
+    minSdk 24
+    targetSdk 36
     consumerProguardFiles 'consumer-rules.pro'
   }
 
@@ -26,4 +26,13 @@ android {
 dependencies {
   implementation project(':expo-modules-core')
   implementation 'com.facebook.react:react-android'
+}
+
+afterEvaluate {
+  tasks.matching { it.name == 'copyReleaseJniLibsProjectOnly' }.configureEach {
+    mustRunAfter(":ir:mergeReleaseNativeLibs")
+  }
+  tasks.matching { it.name == 'copyDebugJniLibsProjectOnly' }.configureEach {
+    mustRunAfter(":ir:mergeDebugNativeLibs")
+  }
 }
