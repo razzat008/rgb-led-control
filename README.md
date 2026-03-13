@@ -1,50 +1,70 @@
-# Welcome to your Expo app 👋
+# rgb-led-control
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Built this because existing apps didn't work  and LED strip was just lying around unsued.
 
-## Get started
+---
 
-1. Install dependencies
+## What to expect?
+ Vibe-coded so not much 
 
+- **Remote UI:** Grouped button grid for Power, Brightness, Colors, and Effects.
+- **Native IR Transmission:** Sends Pronto-format IR commands using Android's ConsumerIrManager (requires custom dev client).
+
+---
+
+## Getting Started
+
+1. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. **Build a custom dev client (required for IR)**
    ```bash
-   npx expo start
+   npx expo prebuild --clean
+   npx expo run:android
    ```
+   > _Note: Expo Go cannot access IR hardware. Use a custom dev client or production build._
 
-In the output, you'll find options to open the app in a
+3. **Install the APK on your device**
+   - Use `adb install <path-to-apk>` or follow Expo's instructions.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+4. **Start the app**
+   - Open the app on your device and use the remote UI.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## Environment Setup
 
-When you're ready, run:
+- **Java 17** required for Android builds.
+- **Android SDK** must be installed and `ANDROID_HOME`/`ANDROID_SDK_ROOT` set.
+- **adb** (Android Debug Bridge) should be in your PATH.
 
-```bash
-npm run reset-project
-```
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## IR Patterns
 
-## Learn more
+- IR commands are loaded from Pronto-format hex strings.
+- Patterns are defined in `constants/ir-commands.ts`.
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Troubleshooting
 
-## Join the community
+- If IR transmission fails, check device logs:
+  ```bash
+  adb logcat | grep IrModule
+  ```
+- Ensure your device supports ConsumerIrManager and has an IR blaster.
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Contributing
+
+Pull requests and suggestions are welcome!
+
+---
+
+## License
+
+MIT
