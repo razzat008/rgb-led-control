@@ -1,0 +1,10 @@
+{
+  "name": "ir",
+  "version": "1.0.0",
+  "description": "IR blaster native module",
+  "main": "index.js",
+  "peerDependencies": {
+    "expo": "*",
+    "react-native": "*"
+  }
+}
